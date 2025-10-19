@@ -15,6 +15,12 @@ export default class extends BaseSchema {
         .inTable('roles')
         .notNullable()
         .defaultTo(Roles.USER)
+      table
+        .integer('subscription_id')
+        .unsigned()
+        .references('id')
+        .inTable('subscriptions')
+        .nullable()
       table.json('preferences').defaultTo({})
       table.string('full_name').nullable()
       table.string('email', 254).notNullable().unique()

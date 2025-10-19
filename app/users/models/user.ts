@@ -14,6 +14,7 @@ import Role from '#users/models/role'
 import Roles from '#users/enums/role'
 import ResetPasswordToken from '#users/models/reset_password_token'
 import encryption from '@adonisjs/core/services/encryption'
+import Subscription from '#marketing/models/subscription'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -47,6 +48,12 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @belongsTo(() => Role)
   declare role: BelongsTo<typeof Role>
+
+  @column()
+  declare subscriptionId: number | null
+
+  @belongsTo(()=> Subscription)
+  declare subscription: BelongsTo<typeof Subscription>
 
   @hasMany(() => ResetPasswordToken)
   declare resetPasswordTokens: HasMany<typeof ResetPasswordToken>
