@@ -16,7 +16,7 @@ export default class PaymentService {
     console.log('PaymentService initialized')
   }
 
-  async createCheckoutSession({ user, subscriptionId, success_url, cancel_url}: CheckoutProps) {
+  async createSubscriptionSession({ user, subscriptionId, success_url, cancel_url}: CheckoutProps) {
     const subscription = await Subscription.findOrFail(subscriptionId)
 
     return stripe.api.checkout.sessions.create({
@@ -33,6 +33,27 @@ export default class PaymentService {
       metadata: {
         userId: user.id.toString(),
         subscriptionId
+      },
+    })
+  }
+
+  async createSessionSession({ user, itemId, success_url, cancel_url}: CheckoutProps) {
+    const subscription = await Subscription.findOrFail(itemId)
+ // todo avec un item genre
+    return stripe.api.checkout.sessions.create({
+      customer_email: user.email,
+      mode: 'payment',
+      line_items: [
+        {
+          price: subscription.stripeId,
+          quantity: 1,
+        },
+      ],
+      success_url: success_url,
+      cancel_url: cancel_url,
+      metadata: {
+        userId: user.id.toString(),
+        //
       },
     })
   }

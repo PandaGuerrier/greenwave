@@ -9,7 +9,7 @@ export default class SubscriptionsController {
   async apply({ response, params, auth, }: HttpContext) {
     const user = auth.use('web').user!
 
-    const session = await this.payment.createCheckoutSession({
+    const session = await this.payment.createSubscriptionSession({
       subscriptionId: params.id,
       user: user,
       cancel_url: "http://localhost:3333/good",
