@@ -22,6 +22,7 @@ export type NavUserOptionsGroup = {
   url: string
   icon: LucideIcon
   shortcut?: string
+  variant?: 'destructive' | 'default'
 }[]
 
 export interface NavUserProps {
@@ -54,7 +55,7 @@ export function NavUser({ user, options }: NavUserProps) {
 
             {group.map((option) => (
               <Link key={option.title} href={option.url}>
-                <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem className="cursor-pointer" data-variant={option.variant}>
                   <option.icon />
                   <span>{option.title}</span>
                   {option.shortcut && (

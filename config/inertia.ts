@@ -20,7 +20,6 @@ const inertiaConfig = defineConfig({
       if (ctx.auth?.user) {
         const user = ctx.auth.user
         await User.preComputeUrls(user)
-        await user.related('cart').query()
 
         return new UserDto(ctx.auth?.user)
       }

@@ -22,14 +22,14 @@ export function RegistrationForm({ className, ...props }: React.ComponentPropsWi
   return (
     <form onSubmit={handleSubmit} className={cn('flex flex-col gap-6', className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Création de votre compte</h1>
+        <h1 className="text-2xl font-bold">Account creation</h1>
         <p className="text-balance text-sm text-muted-foreground">
-          Créez un compte pour profiter de toutes les fonctionnalités de notre application.
+          Create an account to manage your projects and settings.
         </p>
       </div>
       <div className="grid gap-6">
         <div className="grid gap-2">
-          <Label htmlFor="email">Adresse Email</Label>
+          <Label htmlFor="email">Email address</Label>
           <div>
             <Input
               id="email"
@@ -44,14 +44,14 @@ export function RegistrationForm({ className, ...props }: React.ComponentPropsWi
           </div>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="password">Mot de passe</Label>
+          <Label htmlFor="password">Password</Label>
           <div>
             <Input
               id="password"
               type="password"
               value={data.password}
               onChange={(e) => setData('password', e.target.value)}
-              placeholder="Entrez votre mot de passe"
+              placeholder="S!ecureP@ssw0rd"
               className={`${errors?.password ? 'border-red-500' : ''}`}
               required
             />
@@ -59,14 +59,14 @@ export function RegistrationForm({ className, ...props }: React.ComponentPropsWi
           </div>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="passwordConfirmation">Confirmation du mot de passe</Label>
+          <Label htmlFor="passwordConfirmation">Password confirmation</Label>
           <div>
             <Input
               id="passwordConfirmation"
               type="password"
               value={data.passwordConfirmation}
               onChange={(e) => setData('passwordConfirmation', e.target.value)}
-              placeholder="Répétez votre mot de passe"
+              placeholder="Repeat your password"
               required
             />
             <p className="text-[0.8rem] font-medium text-destructive">
@@ -75,13 +75,13 @@ export function RegistrationForm({ className, ...props }: React.ComponentPropsWi
           </div>
         </div>
         <Button type="submit" className="w-full">
-          Créer un compte
+          Create my account
         </Button>
       </div>
       <div className="text-center text-sm">
-        Déjà un compte ?{' '}
+        Already have an account ?{' '}
         <Link href="/login" className="underline underline-offset-4">
-          Se connecter
+          Login
         </Link>
       </div>
     </form>

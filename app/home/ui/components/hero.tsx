@@ -6,7 +6,7 @@ import useSettings from '#home/ui/hooks/use_settings'
 export default function HeroSection() {
   const settings = useSettings()
   return (
-    <section className="overflow-hidden  py-32">
+    <section className="overflow-hidden py-32 w-screen">
         <div className="flex flex-col gap-5">
           <div className="relative flex flex-col gap-5">
             <div

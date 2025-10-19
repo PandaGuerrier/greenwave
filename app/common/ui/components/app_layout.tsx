@@ -10,7 +10,7 @@ import AbilityProvider from '#users/ui/context/abilities_context'
 
 import { ThemeProvider } from '#ui/components/theme-provider'
 import { Toaster } from '#ui/components/sonner'
-import { LogOut, Settings, Users } from 'lucide-react'
+import { LogOut, Settings, ServerCrash, CctvIcon, LayoutDashboard } from 'lucide-react'
 
 interface BreadcrumbItemProps {
   label: string
@@ -23,32 +23,73 @@ interface AppLayoutProps extends React.PropsWithChildren {
 }
 
 const navMain: NavMainItem[] = [
+
   {
-    title: 'Administration',
+    title: 'Engagements Green IT',
+    url: '/engagements',
+  },
+  {
+    title: '🍃 Our solutions 🍃',
     items: [
       {
-        title: 'Users',
-        url: '/users',
-        icon: Users,
-        subject: 'users',
+        title: 'Green server',
+        url: '/settings',
+        icon: ServerCrash,
       },
-    ],
+      {
+        title: 'Green subscriptions',
+        url: '/subscriptions',
+        icon: CctvIcon,
+      },
+    ]
+  },
+  {
+    title: 'Contact Us',
+    url: '/engagements',
+  },
+]
+
+const sideMain: NavMainItem[] = [
+  {
+    title: '🍃 Our solutions 🍃',
+    items: [
+      {
+        title: 'Green server',
+        url: '/settings',
+        icon: ServerCrash,
+      },
+      {
+        title: 'Green subscriptions',
+        url: '/subscriptions',
+        icon: CctvIcon,
+      },
+    ]
+  },
+  {
+    title: 'Contact Us',
+    url: '/engagements',
   },
 ]
 
 export const navUser: NavUserOptionsGroup[] = [
   [
     {
-      title: 'Mon compte',
+      title: 'Dashboard',
+      url: '/dashboard',
+      icon: LayoutDashboard,
+    },
+    {
+      title: 'Settings',
       url: '/settings',
       icon: Settings,
     },
   ],
   [
     {
-      title: 'Déconnexion',
+      title: 'Logout',
       url: '/logout',
       icon: LogOut,
+      variant: 'destructive',
     },
   ],
 ]
@@ -76,8 +117,8 @@ export default function AppLayout({
           </AppHeaderLayout>
         ) : (
           <AppSidebarLayout
-            user={user}
-            navMain={navMain}
+            user={user!}
+            navMain={sideMain}
             navUser={navUser}
             breadcrumbs={breadcrumbs}
           >

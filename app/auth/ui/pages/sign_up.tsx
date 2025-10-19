@@ -3,7 +3,7 @@ import { RegistrationForm } from '#auth/ui/components/registration_form'
 
 export default function SignUpPage() {
   return (
-    <AuthLayout>
+    <AuthLayout type={"register"}>
       <RegistrationForm />
     </AuthLayout>
   )

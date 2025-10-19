@@ -5,6 +5,7 @@ import { NavUser, NavUserOptionsGroup } from '#common/ui/components/nav_user'
 import useUser from '#auth/ui/hooks/use_user'
 import useSettings from '#home/ui/hooks/use_settings'
 import { motion } from 'framer-motion'
+import { ToggleTheme } from '#common/ui/components/toggle_theme'
 
 
 export default function Navbar() {
@@ -30,7 +31,7 @@ export default function Navbar() {
   ]
 
   return (
-    <div className="fixed bg-white border-b border-gray-300 p-3 text-foreground z-50 ">
+    <div className="fixed bg-white dark:bg-black border-b border-gray-300 p-3 text-foreground z-50 ">
       <div className={"flex justify-center w-screen"}>
         <div className="flex items-center w-3/4">
         <motion.div
@@ -59,7 +60,7 @@ export default function Navbar() {
               className="w-auto rounded-xl font-medium transition-all duration-300 md:font-semibold md:-mx-3 md:inline-flex md:items-center md:justify-center px-3 py-2 md:text-sm hover:bg-muted"
               href="/public#features"
             >
-              FAQ
+              Engagements Green IT
             </Link>
             {user ? (
               <NavUser user={user} options={navUser} />
@@ -78,15 +79,15 @@ export default function Navbar() {
           <span className="font-semibold">{settings.name}</span>
         </Link>
 
-        <div className="hidden md:flex items-center justify-center gap-8 w-1/3">
+        <div className="hidden md:flex items-center justify-center gap-8 w-2/3">
           <Link
             className="w-auto rounded-xl font-medium transition-all duration-300 md:font-semibold md:-mx-3 md:inline-flex md:items-center md:justify-center px-3 py-2 md:text-sm hover:bg-muted"
             href="/public#features"
           >
-            FAQ
+            Engagements Green IT
           </Link>
           <Link
-            className="w-auto rounded-xl font-medium transition-all duration-300 md:font-semibold md:-mx-3 md:inline-flex md:items-center md:justify-center px-3 py-2 md:text-sm hover:bg-primary/20 bg-primary/30"
+            className="w-auto rounded-xl font-medium transition-all duration-300 md:font-semibold md:-mx-3 md:inline-flex md:items-center md:justify-center px-3 py-2 md:text-sm hover:bg-primary/10 bg-primary/20"
             href="/public#features"
           >
             🍃  Our solution 🍃
@@ -100,6 +101,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex w-1/2 justify-end relative space-x-4 z-50">
+          <ToggleTheme />
           {user ? (
             <NavUser user={user} options={navUser} />
           ) : (

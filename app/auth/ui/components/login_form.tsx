@@ -27,7 +27,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
     e.preventDefault()
 
     post('/login', {
-      onError: (errors) => {
+      onError: (errors: any) => {
         if ('E_INVALID_CREDENTIALS' in errors) {
           setInvalidCreditials(true)
         }

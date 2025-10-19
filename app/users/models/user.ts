@@ -1,6 +1,6 @@
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
-import { afterCreate, belongsTo, column, computed, hasMany } from '@adonisjs/lucid/orm'
+import { belongsTo, column, computed, hasMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
@@ -14,8 +14,6 @@ import Role from '#users/models/role'
 import Roles from '#users/enums/role'
 import ResetPasswordToken from '#users/models/reset_password_token'
 import encryption from '@adonisjs/core/services/encryption'
-import Order from '#marketing/models/order'
-import Cart from '#marketing/models/cart'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -45,12 +43,6 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare avatarUrl: string | null
 
   @column()
-  declare cartId: number | null
-
-  @belongsTo(() => Cart)
-  declare cart: BelongsTo<typeof Cart>
-
-  @column()
   declare roleId: number
 
   @belongsTo(() => Role)
@@ -59,40 +51,8 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @hasMany(() => ResetPasswordToken)
   declare resetPasswordTokens: HasMany<typeof ResetPasswordToken>
 
-  @hasMany(() => Order)
-  declare orders: HasMany<typeof Order>
-
-  @column({
-    prepare: (value) => encryption.encrypt(value),
-    consume: (value) => encryption.decrypt(value),
-  })
-  declare address: string | null
-
-  @column({
-    prepare: (value) => encryption.encrypt(value),
-    consume: (value) => encryption.decrypt(value),
-  })
-  declare city: string | null
-
   @column()
-  declare state: string | null
-
-  @column()
-  declare zip: string | null
-
-  @column()
-  declare country: string | null
-
-  @column({
-    prepare: (value) => encryption.encrypt(value),
-    consume: (value) => encryption.decrypt(value),
-  })
-  declare complement: string | null
-
-  @column()
-  declare preferences: {
-    ask_for_address: boolean
-  }
+  declare preferences: {}
 
   @computed()
   get isAdmin() {
@@ -111,13 +71,5 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
     await attachmentManager.computeUrl(models.avatar)
   }
-
-  @afterCreate()
-  static async createCart(user: User) {
-    const cart = await Cart.create({ items: { objects: [] } })
-    user.cartId = cart.id
-    await user.related('cart').associate(cart)
-  }
-
   static accessTokens = DbAccessTokensProvider.forModel(User)
 }

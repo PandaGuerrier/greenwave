@@ -11,16 +11,8 @@ export class VerifyInformationUser {
     if (!user.fullName) {
       return {
         redirect: true,
-        message: 'Merci de completer votre nom et prenom',
+        message: 'Please complete your profile',
         route: 'profile.complete.fullname',
-      }
-    }
-
-    if (!user.address && user.preferences.ask_for_address) {
-      return {
-        redirect: true,
-        message: 'Merci de completer votre adresse',
-        route: 'profile.complete.address',
       }
     }
 

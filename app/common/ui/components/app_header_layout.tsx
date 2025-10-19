@@ -9,6 +9,8 @@ import { NavMainItem } from '#common/ui/types/nav_main'
 import Breadcrumb from '#common/ui/components/breadcrumbs'
 
 import UserDto from '#users/dtos/user'
+import { Link } from '@inertiajs/react'
+import { User } from 'lucide-react'
 
 interface BreadcrumbItemProps {
   label: string
@@ -19,7 +21,7 @@ interface AppLayoutProps extends React.PropsWithChildren {
   breadcrumbs?: BreadcrumbItemProps[]
   navMain: NavMainItem[]
   navUser: NavUserOptionsGroup[]
-  user: UserDto
+  user?: UserDto | null
 }
 
 export default function AppHeaderLayout({
@@ -31,20 +33,30 @@ export default function AppHeaderLayout({
 }: AppLayoutProps) {
   return (
     <>
-      <div className="border-sidebar-border/80 border-b">
+      <div className="border-sidebar-border/80 border-b fixed w-screen z-50 bg-background">
         <div className="mx-auto flex h-16 items-center px-4 md:max-w-7xl">
           <NavHeaderMobile items={navMain} />
 
           <AppLogo />
 
-          <div className="ml-6 hidden h-full items-center space-x-6 lg:flex">
+          <div className="px-6 hidden h-full w-full justify-center items-center space-x-6 lg:flex">
             <NavHeaderMain items={navMain} />
           </div>
 
           <div className="ml-auto flex items-center space-x-2">
-            <div className="relative flex items-center space-x-1">
+            <div className="relative flex items-center space-x-2">
               <ToggleTheme />
-              <NavUser user={user} options={navUser} />
+              {user ? (
+                <NavUser user={user} options={navUser} />
+              ) : (
+                <Link
+                  className="rounded-xl font-medium transition-all duration-300 md:font-semibold md:-mx-3 md:inline-flex md:items-center md:justify-center px-3 py-2 md:text-sm hover:bg-muted"
+                  href="/login"
+                >
+                  <User />
+                </Link>
+              )}
+
             </div>
           </div>
         </div>
@@ -54,7 +66,7 @@ export default function AppHeaderLayout({
         <Breadcrumb breadcrumbs={breadcrumbs} />
       </div>
 
-      <main className="mx-auto px-2 flex h-full w-full max-w-7xl flex-1 flex-col gap-4 rounded-xl">
+      <main className="mx-auto px-2 flex h-full w-full max-w-screen flex-1 flex-col gap-4 rounded-xl">
         {children}
       </main>
     </>

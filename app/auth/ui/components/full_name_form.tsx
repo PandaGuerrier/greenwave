@@ -21,14 +21,14 @@ export function FullNameForm({ className, ...props }: React.ComponentPropsWithou
   return (
     <form onSubmit={handleSubmit} className={cn('flex flex-col gap-6', className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Dites-nous en plus sur vous !</h1>
+        <h1 className="text-2xl font-bold">Say more about you !</h1>
         <p className="text-balance text-sm text-muted-foreground">
-          Entrez votre nom et prénom ci-dessous pour compléter votre inscription.
+          Enter your first and last name below to complete your registration.
         </p>
       </div>
       <div className="grid gap-6">
         <div className="grid gap-2">
-          <Label htmlFor="email">Prénom</Label>
+          <Label htmlFor="email">First Name</Label>
           <div>
             <Input
               id="firstname"
@@ -46,7 +46,7 @@ export function FullNameForm({ className, ...props }: React.ComponentPropsWithou
         </div>
         <div className="grid gap-2">
           <div className="grid gap-2">
-            <Label htmlFor="email">Nom de famille</Label>
+            <Label htmlFor="email">Last name</Label>
             <div>
               <Input
                 id="lastname"
@@ -65,7 +65,7 @@ export function FullNameForm({ className, ...props }: React.ComponentPropsWithou
         </div>
         <div>
           <Button type="submit" className="w-full">
-              Continuer
+              Continue
           </Button>
         </div>
       </div>

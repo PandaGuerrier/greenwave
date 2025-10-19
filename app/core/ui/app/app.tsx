@@ -6,7 +6,7 @@ import { hydrateRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 
-const appName = import.meta.env.VITE_APP_NAME || 'CHARGEMENT'
+const appName = import.meta.env.APP_NAME || 'GreenWave'
 
 createInertiaApp({
   progress: { color: 'black' },

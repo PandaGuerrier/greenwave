@@ -12,7 +12,7 @@ export function NavHeaderMain({ items }: NavHeaderMainProps) {
   const abilities = useAbility()
 
   return (
-    <nav className="flex items-center space-x-4">
+    <nav className="flex items-center justify-center w-full space-x-4">
       {items.map((item, index) => {
         if (isSection(item)) {
           const visibleItems = item.items.filter(
