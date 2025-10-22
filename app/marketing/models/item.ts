@@ -35,7 +35,7 @@ export default class Item extends BaseModel {
         unit_amount: item.priceCents,
       },
       url: env.get('APP_URL') + '/items/' + item.id,
-      shippable: true,
+      shippable: false,
     })
     item.stripeId = stripeProduct.id
 

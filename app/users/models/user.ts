@@ -1,8 +1,8 @@
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
-import { belongsTo, column, computed, hasMany } from '@adonisjs/lucid/orm'
+import { belongsTo, column, computed, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
-import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 
 import { attachment, attachmentManager } from '@jrmc/adonis-attachment'
@@ -15,6 +15,7 @@ import Roles from '#users/enums/role'
 import ResetPasswordToken from '#users/models/reset_password_token'
 import encryption from '@adonisjs/core/services/encryption'
 import Subscription from '#marketing/models/subscription'
+import Item from '#marketing/models/item'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -57,6 +58,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @hasMany(() => ResetPasswordToken)
   declare resetPasswordTokens: HasMany<typeof ResetPasswordToken>
+
+  @manyToMany(() => Item)
+  declare items: ManyToMany<typeof Item>
 
   @column()
   declare preferences: {}

@@ -16,12 +16,15 @@ const inertiaConfig = defineConfig({
    * Data that should be shared with all rendered pages
    */
   sharedData: {
-    user: async (ctx) => {
-      if (ctx.auth?.user) {
-        const user = ctx.auth.user
+    user: async ({ auth }) => {
+      if (auth?.user) {
+        const user = auth.use('web').user!
         await User.preComputeUrls(user)
+        if (user.roleId !== null)  await user.load('role')
+        if (user.subscriptionId !== null)   await user.load('subscription')
+        await user.load('items')
 
-        return new UserDto(ctx.auth?.user)
+        return new UserDto(user)
       }
     },
     flashMessages: (ctx) => ctx.session?.flashMessages.all(),
@@ -40,7 +43,7 @@ const inertiaConfig = defineConfig({
         description: settings.description,
         seo: settings.seo,
       }
-    }
+    },
   },
 
   /**

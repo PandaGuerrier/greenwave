@@ -45,6 +45,13 @@ export function NavUser({ user, options }: NavUserProps) {
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">{user.fullName ?? ''}</span>
               <span className="truncate text-xs">{user.email}</span>
+              {
+                user.subscription && (
+                  <span className="truncate text-xs text-muted-foreground">
+                    Subscription: {user.subscription}
+                  </span>
+                )
+              }
             </div>
           </div>
         </DropdownMenuLabel>
