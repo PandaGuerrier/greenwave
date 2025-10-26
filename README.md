@@ -3,6 +3,19 @@
 ---
 GreenWave is an open-source project dedicated to promoting sustainable living through innovative technology solutions. Our mission is to empower individuals and communities to reduce their environmental impact by providing tools, resources, and educational content focused on sustainability.
 
+# Features
+
+- **Ecologic website**
+- **Performant website**
+- **Responsive design**
+- **User-friendly interface**
+- **Stripe use for payments**
+- **Docker for easy deployment**
+- **AdonisJS framework for robust backend**
+- **Tailwind CSS for modern styling**
+- **Interactive dashboards**
+- 
+
 # Rapport
 
 Pour acceder au rapport complet du projet GreenWave, veuillez visiter cette route: /dashboard/rapport
