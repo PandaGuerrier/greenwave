@@ -36,7 +36,7 @@ export function PasswordForm() {
     <form onSubmit={handleSubmit} className="space-y-4 p-0.5">
       <div>
         <Label htmlFor="password" className="mb-1 text-gray-700">
-          Mot de passe
+          Password
         </Label>
         <PasswordInput
           id="password"
@@ -52,7 +52,7 @@ export function PasswordForm() {
 
       <div>
         <Label htmlFor="passwordConfirmation" className="mb-1 text-gray-700">
-          Confirmation du mot de passe
+          Confirm password
         </Label>
         <PasswordInput
           id="passwordConfirmation"
@@ -76,7 +76,7 @@ export function PasswordForm() {
       )}
 
       <div className="pt-2">
-        <Button type="submit">Sauvegarder</Button>
+        <Button type="submit">Save</Button>
       </div>
     </form>
   )

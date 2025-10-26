@@ -11,4 +11,8 @@ import router from '@adonisjs/core/services/router'
 
 const DashboardController = () => import('#dashboard/controllers/dashboard_controller')
 
-router.get('/dashboard', [DashboardController]).middleware([middleware.auth(), middleware.verifyProfile()]).as('dashboard.show')
+
+router.group(() => {
+  router.get('/', [DashboardController]).as('dashboard.show')
+  router.get('/rapport', [DashboardController, 'showRapport']).as('dashboard.show.rapport')
+}).prefix('/dashboard').middleware([middleware.auth(), middleware.verifyProfile()])

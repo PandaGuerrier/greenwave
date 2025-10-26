@@ -38,14 +38,14 @@ const navMain: NavMainItem[] = [
       },
       {
         title: 'Green subscriptions',
-        url: '/subscriptions',
+        url: '/#features',
         icon: CctvIcon,
       },
     ]
   },
   {
     title: 'Contact Us',
-    url: '/engagements',
+    url: '/contact',
   },
 ]
 
@@ -54,20 +54,15 @@ const sideMain: NavMainItem[] = [
     title: '🍃 Our solutions 🍃',
     items: [
       {
-        title: 'Green server',
-        url: '/settings',
-        icon: ServerCrash,
-      },
-      {
-        title: 'Green subscriptions',
-        url: '/subscriptions',
+        title: 'Rapport',
+        url: '/dashbozrd/rapport',
         icon: CctvIcon,
       },
     ]
   },
   {
     title: 'Contact Us',
-    url: '/engagements',
+    url: '/contact',
   },
 ]
 

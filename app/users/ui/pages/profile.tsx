@@ -11,12 +11,12 @@ export default function ProfilePage({ profile }: InferPageProps<ProfileControlle
   const currentPath = '/settings/profile'
 
   return (
-    <AppLayout breadcrumbs={[{ label: 'Utilisateur' }]}>
+    <AppLayout breadcrumbs={[{ label: 'User' }]}>
       <SettingsLayout currentPath={currentPath}>
         <div className="space-y-6">
           <HeadingSmall
-            title="Modifier le profil"
-            description="Modifier votre profil et vos informations personnelles."
+            title="Uptade Profile"
+            description="Update your account's profile information and email address."
           />
           <ProfileForm user={profile} />
         </div>

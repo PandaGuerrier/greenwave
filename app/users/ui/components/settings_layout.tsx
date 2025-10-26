@@ -9,12 +9,12 @@ import { KeyRound, User } from 'lucide-react'
 
 const sidebarNavItems = [
   {
-    title: 'Profil',
+    title: 'Profile',
     icon: <User size={18} />,
     href: '/settings/profile',
   },
   {
-    title: 'Mot de passe',
+    title: 'Password',
     icon: <KeyRound size={18} />,
     href: '/settings/password',
   },

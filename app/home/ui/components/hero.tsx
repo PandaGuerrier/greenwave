@@ -6,14 +6,14 @@ import useSettings from '#home/ui/hooks/use_settings'
 export default function HeroSection() {
   const settings = useSettings()
   return (
-    <section className="overflow-hidden py-32 w-screen">
+    <section className="overflow-hidden py-32 w-screen px-5 md:py-48" id="hero">
         <div className="flex flex-col gap-5">
           <div className="relative flex flex-col gap-5">
             <div
               style={{
                 transform: 'translate(-50%, -50%)',
               }}
-              className="absolute border-primary left-1/2 top-1/2 -z-10 mx-auto size-[800px] rounded-full border p-16 [mask-image:linear-gradient(to_top,transparent,transparent,white,white,white,transparent,transparent)] md:size-[1300px] md:p-32"
+              className="absolute border-primary left-1/2 top-1/2 -z-10 md:mx-auto size-[500px] rounded-full border p-16 [mask-image:linear-gradient(to_top,transparent,transparent,white,white,white,transparent,transparent)] md:size-[1300px] md:p-32"
             >
               <div className="size-full border-primary/50 rounded-full border p-16 md:p-32">
                 <div className="size-full rounded-full border-primary/30 border"></div>
@@ -25,7 +25,7 @@ export default function HeroSection() {
             <p className="mx-auto max-w-screen-md text-center text-muted-foreground md:text-lg">
               The future, <span className={"text-primary"}>Your future.</span>
             </p>
-            <div className="mx-auto text-xs w-1/3 text-center text-muted-foreground">
+            <div className="mx-auto text-xs md:w-1/3 text-center text-muted-foreground">
               {settings.description}
             </div>
             <div className="flex flex-col items-center justify-center gap-3 pb-12 pt-3">

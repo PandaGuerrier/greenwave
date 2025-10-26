@@ -17,4 +17,6 @@ router.group(() => {
   router.post('/webhook', [WebhookController]).middleware(middleware.verifyStripeWebhook())
 
   router.get('/sub/:id', [SubscriptionsController, 'apply']).middleware(middleware.auth())
+
+  router.on('/failure').renderInertia('marketing/failure')
 }).prefix('/stripe')

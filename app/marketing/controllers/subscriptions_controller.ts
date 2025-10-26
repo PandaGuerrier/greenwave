@@ -12,8 +12,8 @@ export default class SubscriptionsController {
     const session = await this.payment.createSubscriptionSession({
       subscriptionId: params.id,
       user: user,
-      cancel_url: "http://localhost:3333/good",
-      success_url: "http://localhost:3333/pasgood"
+      cancel_url: "http://localhost:3333/stripe/failure",
+      success_url: "http://localhost:3333/dashboard"
     })
 
     return response.redirect(session.url!)

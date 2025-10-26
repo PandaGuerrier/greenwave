@@ -60,7 +60,7 @@ export function ProfileForm({ user }: Props) {
 
         <div>
           <Button type="button" onClick={() => avatarInputRef.current?.click()}>
-             Modifier l'avatar
+            Modify Avatar
           </Button>
           <p className="mt-2 text-xs/5">JPG, GIF ou PNG. 1MB max.</p>
         </div>
@@ -81,7 +81,7 @@ export function ProfileForm({ user }: Props) {
 
       <div>
         <Label htmlFor="fullName" className="mb-1 text-gray-700">
-          Nom complet
+          Full name
         </Label>
         <Input
           id="fullName"
@@ -111,7 +111,7 @@ export function ProfileForm({ user }: Props) {
       )}
 
       <div className="pt-2">
-        <Button type="submit">Sauvegarder</Button>
+        <Button type="submit">Save</Button>
       </div>
     </form>
   )

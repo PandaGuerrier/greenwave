@@ -15,8 +15,8 @@ export default function PasswordPage({}: InferPageProps<PasswordController, 'sho
       <SettingsLayout currentPath={currentPath}>
         <div className="space-y-6">
           <HeadingSmall
-            title="Modifier le mot de passe"
-            description="Veuillez penser à choisir un mot de passe fort et unique."
+            title="Password"
+            description="Please ensure your account is using a long, random password to stay secure."
           />
           <PasswordForm />
         </div>

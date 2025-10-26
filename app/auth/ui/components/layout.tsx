@@ -11,7 +11,7 @@ export interface AuthLayoutProps extends React.PropsWithChildren {
 }
 
 export default function AuthLayout({ children, center, type }: AuthLayoutProps) {
-  const image = type === 'login' ? '/img/login_image.webp' : '/img/register_image.webp'
+  const image = type === 'login' ? '/img/auth/login_image.webp' : '/img/auth/register_image.webp'
   return (
     <>
       <Toaster />
