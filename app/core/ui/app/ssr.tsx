@@ -5,13 +5,13 @@ export default function render(page: any) {
   return createInertiaApp({
     page,
     render: ReactDOMServer.renderToString,
-    resolve: (name) => {
+    resolve: (name: string) => {
       const firstPart = name.split('/')[0]
       const rest = name.split('/').slice(1).join('/')
 
       const pages = import.meta.glob('/app/*/ui/pages/**/*.tsx', { eager: true })
       return pages[`/app/${firstPart}/ui/pages/${rest}.tsx`]
     },
-    setup: ({ App, props }) => <App {...props} />,
+    setup: ({ App, props }: { }) => <App {...props} />,
   })
 }

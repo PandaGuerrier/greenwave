@@ -12,6 +12,9 @@ export default defineConfig({
     react(),
     adonisjs({ entrypoints: ['app/core/ui/app/app.tsx'], reload: ['resources/views/**/*.edge'] }),
   ],
+  server: {
+    allowedHosts: ['green.pandaguerrier.fr']
+  },
 
   /**
    * Define aliases for importing modules from

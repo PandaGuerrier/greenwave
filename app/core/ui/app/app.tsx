@@ -6,7 +6,7 @@ import { hydrateRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 
-const appName = import.meta.env.APP_NAME || 'GreenWave'
+const appName =  'GreenWave'
 
 createInertiaApp({
   progress: { color: 'black' },
@@ -18,11 +18,12 @@ createInertiaApp({
     const rest = name.split('/').slice(1).join('/')
     return resolvePageComponent(
       `/app/${firstPart}/ui/pages/${rest}.tsx`,
+        // @ts-ignore
       import.meta.glob('/app/*/ui/pages/**/*.tsx')
     )
   },
 
-  setup({ el, App, props }) {
+  setup({ el, App, props }: { el: Element; App: React.ComponentType; props: Record<string, any> }) {
     hydrateRoot(el, <App {...props} />)
   },
 })

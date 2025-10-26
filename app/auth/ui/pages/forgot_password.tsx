@@ -3,7 +3,7 @@ import AuthLayout from '#auth/ui/components/layout'
 
 export default function SignInPage() {
   return (
-    <AuthLayout>
+    <AuthLayout type={"login"}>
       <ForgotPasswordForm />
     </AuthLayout>
   )
